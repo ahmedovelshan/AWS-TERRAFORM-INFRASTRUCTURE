@@ -1,0 +1,25 @@
+Part 1: Infrastructure Setup and Security 
+1. Provisioning Resources: Set up a Virtual Network with appropriate subnets.
+Provision 2 VM instances with a Linux OS within the same network.
+Setup OpenVPN, or similar on one of the Linux VMs. 
+Protect one VM against unauthorized access attempts Implement access control policies Setup a Wiki on one of the VMs 2.
+Networking and Security: Configure Network Security Groups (NSGs) to control inbound and outbound traffic to the VMs. 
+Implement just-in-time VM access to reduce the attack surface. 
+Set up a VPN Gateway to securely connect the cloud Virtual Network to the on-premises network, ensuring secure and reliable communication. 
+
+3. Public Key Infrastructure (PKI): Implement a basic PKI solution to secure communications within the network. 
+Issue and manage certificates for the VMs to enable secure SSL/TLS communications. 4. Automation: Write a script using Bicep to automate the provisioning of the above infrastructure.
+Ensure that the script includes setting up the following security measures: Role-based access control (RBAC) to limit access to the VMs and other resources.
+Azure Key Vault for storing sensitive information such as VM passwords. Azure Backup for the VMs. An Azure Recovery Services Vault. 
+
+Part 2: Monitoring and Communication 1. Security Monitoring: Configure Azure Security Center to provide security recommendations and continuous security assessment.
+Set up Azure Monitor to track the performance and availability of the VMs. Documentation and Reporting Create a concise document outlining the infrastructure setup and security measures, 
+including the script. Document the IAM configuration, security practices implemented, and any networking or PKI configurations. 
+Deliverables Script: Submit the script used to automate the infrastructure setup. Documentation: Provide a document covering the infrastructure setup, IAM configuration, security measures,
+and PKI setup. Report: A brief report detailing security implementations and compliance strategies. Evaluation Criteria Technical Proficiency: Ability to set up and configure
+cloud resources, implement security measures, and demonstrate networking and PKI skills. Problem-Solving: Approach to addressing the requirements and challenges presented in the assignment. 
+Documentation and Communication: Clarity, completeness, and professionalism of the documentation and report. Security Best Practices: Implementation of security measures and best practices.
+Creativity with Linux: Demonstration of creative and effective use of Linux-specific security and management tools. Timeline and Expectations You have one week to complete this assignment. 
+The goal is not necessarily to complete the entire deployment but to discuss your approach and reasoning. If more time is needed, please let us know—we want to ensure this task does not
+interfere with your existing commitments. Feel free to reach out with any questions or for further guidance at any point during the assignment. By the end of this assessment, we aim to have
+a comprehensive discussion about your process and decision-making in securing resources efficiently using cloud infrastructure, with a balanced focus on Azure, networking, PKI, and Linux.
