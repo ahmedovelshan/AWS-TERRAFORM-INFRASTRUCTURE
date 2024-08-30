@@ -20,7 +20,7 @@ DB_PASS="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13)"
 BOOKSTACK_DIR="/var/www/bookstack"
 
 # Get the domain from the arguments (Requested later if not set)
-DOMAIN=$1
+DOMAIN=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
 # Prevent interactive prompts in applications
 export DEBIAN_FRONTEND=noninteractive
