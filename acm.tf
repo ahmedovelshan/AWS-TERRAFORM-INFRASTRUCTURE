@@ -30,7 +30,7 @@ resource "aws_s3_bucket_policy" "s3_policy" {
 }
 
 resource "aws_acmpca_certificate_authority" "rootca" {
-  usage_mode = "SHORT_LIVED_CERTIFICATE"
+  usage_mode = "GENERAL_PURPOSE"
   type = "ROOT"
   certificate_authority_configuration {
     key_algorithm     = "RSA_4096"
@@ -64,7 +64,7 @@ resource "aws_acmpca_certificate" "rootca_certificate" {
 
   validity {
     type  = "YEARS"
-    value = 3
+    value = 10
   }
 }
 
@@ -78,7 +78,7 @@ resource "aws_acmpca_certificate_authority_certificate" "rootca_certificate_assi
 
 resource "aws_acmpca_certificate_authority" "subca" {
   type = "SUBORDINATE"
-  usage_mode = "SHORT_LIVED_CERTIFICATE"
+  usage_mode = "GENERAL_PURPOSE"
   certificate_authority_configuration {
     key_algorithm     = "RSA_2048"
     signing_algorithm = "SHA512WITHRSA"
@@ -106,8 +106,8 @@ resource "aws_acmpca_certificate" "subca_certificate" {
   template_arn = "arn:${data.aws_partition.current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1"
 
   validity {
-    type  = "DAYS"
-    value = 7
+    type  = "YEARS"
+    value = 5
   }
 }
 
@@ -121,3 +121,18 @@ resource "aws_acmpca_certificate_authority_certificate" "subordinate" {
 
 
 data "aws_partition" "current" {}
+
+
+resource "aws_acm_certificate" "kb_testmmc_net" {
+  domain_name       = "kb.testmmc.net"
+  subject_alternative_names = ["kb.testmmc.net"]
+  certificate_authority_arn  = aws_acmpca_certificate_authority.subca.arn
+  tags = {
+    Environment = "test"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
